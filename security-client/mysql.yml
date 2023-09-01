@@ -1,0 +1,15 @@
+version: '1.1'
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_DATABASE=user_registration
+      - MYSQL_ROOT_PASSWORD=perez
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:
+    driver: local

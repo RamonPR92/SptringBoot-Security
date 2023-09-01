@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+group registration
+FinalUser -> RegistrationController: Call to /register
+RegistrationController -> UserService: Create and user
+UserService -> UserRepository: Save de user
+RegistrationController -> EventPublisher: publish a registrationCompleteEvent
+EventPublisher -> EventListener: Send the event
+EventListener -> UserService: Create a VerificationToken
+UserService -> VerificationTokenRepository: Save the VerificationToken
+EventListener -> FinalUser: Show the URL for verify the user
+end
+group verification
+FinalUser -> RegistrationController: Call to /verifyRegistration
+RegistrationController -> UserService: Verify user with token
+UserService -> VerificationTokenRepository: Look for the verification token
+VerificationTokenRepository -> UserService: Return the verification token
+UserService -> UserService : Check the date of VerificationToken
+UserService -> UserRepository: Enable the user
+UserService -> RegistrationController: Notify that the user was verified
+RegistrationController -> FinalUser: User verified successfully
+end
+@enduml

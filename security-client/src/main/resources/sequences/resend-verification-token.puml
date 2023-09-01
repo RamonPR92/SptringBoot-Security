@@ -1,0 +1,13 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+FinalUser -> RegistrationController: Call to /resendVerificationToken
+RegistrationController -> UserService: Request generate new verification token
+UserService -> VerificationTokenRepository: Get the verification token using the old token
+UserService -> UserService: Check if the verification token exists
+UserService -> UserService: Generate a new token
+UserService -> VerificationTokenRepository: Save the new token
+UserService -> RegistrationController: Return the new verification token
+RegistrationController -> FinalUser: Show the verification url with the new token
+@enduml
