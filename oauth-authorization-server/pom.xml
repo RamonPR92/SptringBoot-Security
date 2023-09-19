@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ramon</groupId>
-    <artifactId>security-client</artifactId>
+    <artifactId>oauth-authorization-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>security-client</name>
-    <description>security-client</description>
+    <name>oauth-authorization-server</name>
+    <description>oauth-authorization-server</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -51,16 +51,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.projectreactor.netty</groupId>
-            <artifactId>reactor-netty</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>0.2.2</version>
         </dependency>
     </dependencies>
 
